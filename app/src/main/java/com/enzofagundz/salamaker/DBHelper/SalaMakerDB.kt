@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.enzofagundz.salamaker.model.Reservation
 import com.enzofagundz.salamaker.model.User
 
 class SalaMakerDB(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVersion) {
@@ -20,9 +21,9 @@ class SalaMakerDB(context: Context) : SQLiteOpenHelper(context, dbName, null, db
         
         val createReservationTable = "CREATE TABLE reservation (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "startDate DATE," +
-                "endDate DATE," +
-                "status VARCHAR(50)," +
+                "date DATE," +
+                "startTime VARCHAR(50)," +
+                "endTime VARCHAR(50)," +
                 "user_id INTEGER," +
                 "FOREIGN KEY(user_id) REFERENCES user(id)" +
                 ");"
@@ -85,5 +86,30 @@ class SalaMakerDB(context: Context) : SQLiteOpenHelper(context, dbName, null, db
             return user
         }
         return null
+    }
+
+    // método insertReservation que recebe um objeto Reservation e insere no banco de dados
+    fun insertReservation(reservation: Reservation) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        // converter a data para o formato yyyy-MM-dd
+        val date = reservation.date.split("/")
+        val newDate = "${date[2]}-${date[1]}-${date[0]}"
+        values.put("date", newDate)
+        
+        // converter a hora de início para o formato HH:mm
+        val startTime = reservation.startTime.split(":")
+        val newStartTime = "${startTime[0]}:${startTime[1]}"
+        values.put("startTime", newStartTime)
+
+        // converter a hora de término para o formato HH:mm
+        val endTime = reservation.endTime.split(":")
+        val newEndTime = "${endTime[0]}:${endTime[1]}"
+        values.put("endTime", newEndTime)
+        values.put("user_id", reservation.userId)
+
+        db.insert("reservation", null, values)
+        db.close()
     }
 }

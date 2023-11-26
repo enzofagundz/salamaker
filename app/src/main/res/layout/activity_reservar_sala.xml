@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Reservar Sala"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/data_reserva_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data"
+        android:ems="10"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/hora_inicio_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hora de início"
+        android:ems="10"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/hora_termino_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hora de término"
+        android:ems="10"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/btn_cadastrar_sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar" />
+
+</LinearLayout>

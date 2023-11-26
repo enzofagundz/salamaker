@@ -4,8 +4,8 @@ import java.time.LocalDate
 
 class Reservation {
     var id: Int = 0
-    var startDate: LocalDate = LocalDate.now()
-    var endDate: LocalDate = LocalDate.now()
-    var status: String = ""
-    var user: User = User(0, "username", "firstName", "lastName", "email", "password")
+    var date: String = ""
+    var startTime: String = ""
+    var endTime: String = ""
+    var userId: Int = 0
 }
