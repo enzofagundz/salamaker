@@ -7,5 +7,5 @@ class Reservation {
     var startDate: LocalDate = LocalDate.now()
     var endDate: LocalDate = LocalDate.now()
     var status: String = ""
-    var user: User = User()
+    var user: User = User(0, "username", "firstName", "lastName", "email", "password")
 }
